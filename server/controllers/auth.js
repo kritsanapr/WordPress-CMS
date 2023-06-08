@@ -63,4 +63,30 @@ export const signup = async (req, res) => {
   }
 };
 
-export const signin = async (req, res) => {};
+export const signin = async (req, res) => {
+  try {
+    const { email, password, resetCode } = req.body;
+    const user = await User.findOne({ email, resetCode });
+
+    if (!user) {
+      return res.json({
+        error: "Invalid credentials",
+      });
+    }
+
+    if (!password || password.length < 6) {
+      return res.json({
+        error: "Password is required and should be 6 characters long",
+      });
+    }
+
+    const hashedPassword = await hashPassword(password);
+    user.password = hashedPassword;
+    user.resetCode = "";
+    user.save();
+
+    return res.json({ ok: true });
+  } catch (err) {
+    console.log(err);
+  }
+};
