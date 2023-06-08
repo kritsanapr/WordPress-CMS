@@ -35,6 +35,7 @@ function Signup() {
               placeholder="Email"
             />
           </Form.Item>
+
           {/* password */}
           <Form.Item
             name="password"

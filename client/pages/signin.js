@@ -18,16 +18,6 @@ function Signin() {
           initialValues={{ remember: true }}
           onFinish={onFinish}
         >
-          {/* nam */}
-          <Form.Item
-            name="name"
-            rules={[{ required: true, message: "Please input your name!" }]}
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Name"
-            />
-          </Form.Item>
           {/* email */}
           <Form.Item name="email" rules={[{ type: "email" }]}>
             <Input
@@ -47,9 +37,12 @@ function Signin() {
             />
           </Form.Item>
 
-          <Link href="/forgot-password">Forgot password</Link>
+          <Link href="/forgot-password">
+            Forgot Password
+          </Link>
           <br />
           <br />
+
           <Form.Item>
             <Button
               type="primary"
@@ -59,8 +52,10 @@ function Signin() {
               Login
             </Button>
             <br />
-            <br />
-            Or <Link href="/signup">Register now!</Link>
+            Or{" "}
+            <Link href="/signup">
+              Register now!
+            </Link>
           </Form.Item>
         </Form>
       </Col>

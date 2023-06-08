@@ -40,6 +40,7 @@ const AdminNav = () => {
   }, [onlyWidth < 800]);
 
   const activeName = (name) => `${current === name && "active"}`;
+
   return (
     <Sider
       collapsible
