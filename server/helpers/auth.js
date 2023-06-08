@@ -1,5 +1,4 @@
-
-import bcrypt from "bcrypt";
+import { bcrypt } from "bcrypt";
 
 export const hashPassword = (password) => {
   return new Promise((resolve, reject) => {
@@ -7,10 +6,12 @@ export const hashPassword = (password) => {
       if (err) {
         reject(err);
       }
+
       bcrypt.hash(password, salt, (err, hash) => {
         if (err) {
           reject(err);
         }
+
         resolve(hash);
       });
     });
