@@ -3,9 +3,17 @@ import http from "http";
 import { config as dotenvConfig } from "dotenv";
 import { PORT } from "./config.js";
 import authRouter from "./routes/auth.js";
+import mongoose from "mongoose";
+import { DATABASE_URL } from "./config.js";
 
 dotenvConfig();
 const app = express();
+
+mongoose.set("strictQuery", false);
+mongoose
+  .connect(DATABASE_URL)
+  .then(() => console.log("DB connected"))
+  .catch((err) => console.log("DB CONNECTION ERROR: ", err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
